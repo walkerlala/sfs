@@ -49,23 +49,23 @@ This `struct_inode_info` is the same for both regular file and directory.
 Things are similar in many linux distribution, I would use Ubuntu/Debian as example:
   Get the kernel header. Simply download the kernel header
   
-      `username@machine:~/sfs$ sudo apt-get install linux-headers-`uname -r`
+      username@machine:~/sfs$ sudo apt-get install linux-headers-`uname -r
   
   (you can also use some specific version of kernel and change the makefile. For example:
   
-      `git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git`
-      `cd linux`
-      `git checkout v2.6.36.2`
+      git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
+      cd linux
+      git checkout v2.6.36.2
       
-  and then change in the `Makefile' the `/lib/modules/$(shell uname -r)/build' to the new kernel directory. )
+  and then change in the "Makefile" the "/lib/modules/$(shell uname -r)/build" to the new kernel directory. )
   
   And also make sure you have all the required dev package:
       
-      `username@machine:~/sfs$ sudo apt-get install gcc build-essential`
+      username@machine:~/sfs$ sudo apt-get install gcc build-essential
       
   Then in the source dir, you can compile the sfs filesystem module:
   
-      `username@machine:~/sfs$ make`
+      username@machine:~/sfs$ make
   
   If the weather is good enough then it would compile successfully. But as the linux kernel evovle, with its internal API
   change frequently, sometimes things would break. You have to manualy fix it. Usually you just have to change a few lines.
@@ -73,29 +73,29 @@ Things are similar in many linux distribution, I would use Ubuntu/Debian as exam
   
   Then install the module:
   
-      `username@machine:~/sfs$ sudo insmod sfs.ko`
+      username@machine:~/sfs$ sudo insmod sfs.ko
       
   and format the image file(we use a normal file as disk, with help from linux's loop device mechanism):
   
-      `username@machine:~/sfs$ mksfs.sfs ./image`
+      username@machine:~/sfs$ mksfs.sfs ./image
   
   mount the image:
   
-      `username@machine:~/sfs$ sudo mount -o loop -t sfs ./image ./dir`
+      username@machine:~/sfs$ sudo mount -o loop -t sfs ./image ./dir
       
   to make things smooth, you may want to change the permission of the mounted directory:
   
-      `username@machine:~/sfs$ sudo chown username:usergroup ./dir`
+      username@machine:~/sfs$ sudo chown username:usergroup ./dir
       
   then a simple filesystem is just under `./dir`. Walk into it and make some change:
   
-      `username@machine:~/sfs$ cd ./dir`
-      `username@machine:~/sfs$ touch lala.txt`
-      `username@machine:~/sfs$ echo "Hello World" > lala.txt`
-      `username@machine:~/sfs$ cat lala.txt`
-      `username@machine:~/sfs$ rm lala.txt`
-      `username@machine:~/sfs$ mkdir newdir`
-      `username@machine:~/sfs$ cd newdir`
+      username@machine:~/sfs$ cd ./dir
+      username@machine:~/sfs$ touch lala.txt
+      username@machine:~/sfs$ echo "Hello World" > lala.txt
+      username@machine:~/sfs$ cat lala.txt
+      username@machine:~/sfs$ rm lala.txt
+      username@machine:~/sfs$ mkdir newdir
+      username@machine:~/sfs$ cd newdir
       ...
   
   That's it.
