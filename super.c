@@ -1344,7 +1344,7 @@ static void __exit sfs_exit(void) {
     printk(SFS_KERN_LEVEL "sfs module unloaded\n");
 }
 
-MODULE_LICENSE("GPL");
+/*MODULE_LICENSE("GPL");*/
 MODULE_AUTHOR("Yubin Ruan");
 module_init(sfs_init);
 module_exit(sfs_exit);
